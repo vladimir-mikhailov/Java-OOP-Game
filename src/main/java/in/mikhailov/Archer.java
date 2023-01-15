@@ -13,6 +13,10 @@ public class Archer extends Hero {
         return super.toString() + ", shots=" + shots;
     }
 
+    public void setShots(int shots) {
+        this.shots = shots;
+    }
+
     public int getShots() {
         return shots;
     }

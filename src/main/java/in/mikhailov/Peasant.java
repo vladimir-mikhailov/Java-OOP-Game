@@ -24,4 +24,8 @@ public class Peasant extends Hero {
     public boolean isCarrier() {
         return isCarrier;
     }
+
+    public void setCarrier(boolean carrier) {
+        isCarrier = carrier;
+    }
 }

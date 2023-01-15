@@ -1,12 +1,15 @@
 package in.mikhailov;
 
-import java.util.Arrays;
 import com.github.javafaker.Faker;
+
+import java.util.Arrays;
 
 public abstract class Hero {
     private String name;
     private int attack;
     private int defense;
+
+
     private int health;
     private int speed;
     private int[] damage;
@@ -35,23 +38,47 @@ public abstract class Hero {
         return attack;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public int getDefense() {
         return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
     public int getHealth() {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int getSpeed() {
         return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public int[] getDamage() {
         return damage;
     }
 
+    public void setDamage(int[] damage) {
+        this.damage = damage;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

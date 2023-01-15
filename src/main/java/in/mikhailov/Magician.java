@@ -1,6 +1,7 @@
 package in.mikhailov;
 
 public class Magician extends Hero {
+
     private int mana;
 
     public Magician(int attack, int defense, int[] damage, int health, int speed, String name, int mana) {
@@ -15,5 +16,9 @@ public class Magician extends Hero {
 
     public int getMana() {
         return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 }

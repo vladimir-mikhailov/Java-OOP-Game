@@ -4,33 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Crossbowman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/CrossbowmanFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/HeroFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Monk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/MonkFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/PeasantFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/RandomFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Roque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/RoqueFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Sniper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/SniperFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Soldier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Spearman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/SpearmanFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Wizard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/WizardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="seminar 1 homework">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +25,31 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="vladimir-mikhailov" />
+        <option name="repository" value="Java-OOP-Game" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7339a1d0-2244-4509-8183-a82d4869a010" />
+        <option name="url" value="https://github.com/vladimir-mikhailov/Java-OOP-Game.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,6 +60,9 @@
         <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2KNBdtE4XRGf2eNeykI6g9uMQQh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -71,7 +77,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last.edited.regexp": "dsfg.asdfg.gg"
+    "last.edited.regexp": "dsfg.asdfg.gg",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -121,6 +128,14 @@
       <option name="presentableId" value="Default" />
       <updated>1673805251962</updated>
     </task>
+    <task id="LOCAL-00001" summary="seminar 1 homework">
+      <created>1673817186867</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673817186868</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,22 +143,14 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="seminar 1 homework" />
+    <option name="LAST_COMMIT_MESSAGE" value="seminar 1 homework" />
   </component>
 </project>
