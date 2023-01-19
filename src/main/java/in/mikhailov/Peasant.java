@@ -1,10 +1,12 @@
 package in.mikhailov;
 
+import java.util.ArrayList;
+
 public class Peasant extends Hero {
     private boolean isCarrier;
 
-    private Peasant(int attack, int defense, int[] damage, int health, int speed, String name) {
-        super(attack, defense, damage, health, speed, name);
+    private Peasant(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
+        super(attack, defense, damage, maxHealth, speed, name);
         this.isCarrier = true;
     }
 
@@ -19,6 +21,11 @@ public class Peasant extends Hero {
     @Override
     public String toString() {
         return super.toString() + ", isCarrier=" + isCarrier;
+    }
+
+    @Override
+    public void step(ArrayList<Hero> heroesParty) {
+
     }
 
     public boolean isCarrier() {
