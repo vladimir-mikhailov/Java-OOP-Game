@@ -1,8 +1,8 @@
 package in.mikhailov;
 
 public class Spearman extends Soldier {
-    private Spearman(int attack, int defense, int[] damage, int health, int speed, String name) {
-        super(attack, defense, damage, health, speed, name);
+    private Spearman(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
+        super(attack, defense, damage, maxHealth, speed, name);
     }
 
     public Spearman(String name) {

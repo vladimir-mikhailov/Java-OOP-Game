@@ -1,8 +1,8 @@
 package in.mikhailov;
 
 public class Roque extends Soldier {
-    private Roque(int attack, int defense, int[] damage, int health, int speed, String name) {
-        super(attack, defense, damage, health, speed, name);
+    private Roque(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
+        super(attack, defense, damage, maxHealth, speed, name);
     }
 
     public Roque(String name) {

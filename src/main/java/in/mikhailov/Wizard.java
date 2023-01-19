@@ -1,8 +1,8 @@
 package in.mikhailov;
 
 public class Wizard extends Magician {
-    private Wizard(int attack, int defense, int[] damage, int health, int speed, String name, int mana) {
-        super(attack, defense, damage, health, speed, name, mana);
+    private Wizard(int attack, int defense, int[] damage, int maxHealth, int speed, String name, int mana) {
+        super(attack, defense, damage, maxHealth, speed, name, mana);
     }
 
     public Wizard(String name) {
