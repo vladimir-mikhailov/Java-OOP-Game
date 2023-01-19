@@ -8,8 +8,6 @@ public abstract class Hero {
     private String name;
     private int attack;
     private int defense;
-
-
     private int health;
     private int speed;
     private int[] damage;

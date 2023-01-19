@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="seminar 1 homework">
+    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +30,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="recentNewPullRequestHead">
       <RepoCoordinatesHolder>
@@ -72,15 +70,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last.edited.regexp": "dsfg.asdfg.gg",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;dsfg.asdfg.gg&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="in.mikhailov" />
@@ -151,6 +150,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="seminar 1 homework" />
-    <option name="LAST_COMMIT_MESSAGE" value="seminar 1 homework" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>

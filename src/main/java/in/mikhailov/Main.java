@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        RandomFactory factory = new RandomFactory(new HeroFactory[]{
+        RandomFactory randomFactory = new RandomFactory(new HeroFactory[]{
                 new CrossbowmanFactory(),
                 new MonkFactory(),
                 new PeasantFactory(),
@@ -18,10 +18,10 @@ public class Main {
         ArrayList<Hero> heroes = new ArrayList<>(50);
 
         for (int i = 0; i < 50; i++) {
-            Hero hero = factory.create();
-            heroes.add(hero);
-            System.out.println(i + 1 + ". " + hero);
+            heroes.add(randomFactory.create());
         }
+
+        heroes.forEach(System.out::println);
 
         ArrayList<Hero> filteredList = filter("Wizard", heroes);
 
