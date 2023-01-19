@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="refactor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/HeroInterface.java" afterDir="false" />
+    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="feat: Magician can heal his party mates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Crossbowman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Monk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Roque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Roque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Sniper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Soldier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Spearman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674145906426</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: Magician can heal his party mates">
+      <created>1674152717352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674152717352</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="seminar 1 homework" />
     <MESSAGE value="refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <MESSAGE value="feat: Magician can heal his party mates" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Magician can heal his party mates" />
   </component>
 </project>
