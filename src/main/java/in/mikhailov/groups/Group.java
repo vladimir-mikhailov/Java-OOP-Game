@@ -3,15 +3,23 @@ package in.mikhailov.groups;
 import in.mikhailov.heroes.Hero;
 
 import java.util.*;
+import com.github.javafaker.Faker;
 
 abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
     protected List<Hero> group;
     int capacity;
     int index;
+    String name;
 
-    public Group() {
+
+    public Group(String name) {
         group = new ArrayList<>();
         index = 0;
+        this.name = name;
+    }
+
+    public Group() {
+        this((new Faker()).lordOfTheRings().location());
     }
 
     public int getCapacity() {
@@ -22,6 +30,14 @@ abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
         return group.size();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void sort(String sortBy) {
         Comparator<Hero> comparator = null;
         switch (sortBy) {
@@ -30,11 +46,9 @@ abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
         }
         group.sort(comparator);
     }
-
     @Override
     public boolean add(Hero hero) {
         group.add(hero);
-        hero.setTeam(group);
         return true;
     }
 

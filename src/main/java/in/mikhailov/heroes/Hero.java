@@ -1,9 +1,9 @@
 package in.mikhailov.heroes;
 
 import com.github.javafaker.Faker;
+import in.mikhailov.groups.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 public abstract class Hero implements HeroInterface {
     protected String name;
@@ -13,7 +13,7 @@ public abstract class Hero implements HeroInterface {
     private int health;
     private int speed;
     private int[] damage;
-    protected List<Hero> team;
+    protected Team team;
     protected String className;
 
 
@@ -101,13 +101,12 @@ public abstract class Hero implements HeroInterface {
         return name + ", " + className + " >> Health: " + this.health + "/" + maxHealth;
     }
 
-    @Override
-    public void step() {
-    }
 
-    @Override
-    public void setTeam(List<Hero> team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 
+    public Team getTeam() {
+        return team;
+    }
 }

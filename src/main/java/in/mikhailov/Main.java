@@ -1,7 +1,10 @@
 package in.mikhailov;
 
-import in.mikhailov.groups.*;
+import in.mikhailov.groups.Team;
+import in.mikhailov.groups.TeamFactory;
 import in.mikhailov.heroes.*;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,23 +35,29 @@ public class Main {
             dreamTeam2.add(team2RandomFactory.create());
         }
 
-        System.out.println("Party1 heroes:");
-        dreamTeam1.sort("className");
-        dreamTeam1.forEach(hero -> System.out.println(hero.getInfo()));
+        printTeamStatus(dreamTeam1);
+        printTeamStatus(dreamTeam2);
 
-        System.out.println("\nParty 1 moves:");
-        while (dreamTeam1.hasNext()) {
-            dreamTeam1.next().step();
+        System.out.print("\n Для продолжения нажмите <Enter>, для выхода <Q>: ");
+
+        Scanner input = new Scanner(System.in);
+        while (input.hasNextLine()) {
+            if (input.nextLine().isEmpty()) {
+                printTeamStatus(dreamTeam1);
+                printTeamStatus(dreamTeam2);
+
+                dreamTeam1.makeMove();
+                dreamTeam2.makeMove();
+
+                System.out.print("\n Для продолжения нажмите <Enter>, для выхода <Q>: ");
+            }
         }
+    }
 
-        System.out.println("\nParty2 heroes:");
-        dreamTeam2.sort("healthPoints");
-        dreamTeam2.forEach(hero -> System.out.println(hero.getInfo()));
-
-        System.out.println("\nParty 2 moves:");
-        while (dreamTeam2.hasNext()) {
-            dreamTeam2.next().step();
-        }
-
+    private static void printTeamStatus(Team team) {
+        System.out.println(team.getName() + " Castle Heroes:");
+        //team.sort("className");
+        team.forEach(hero -> System.out.println(hero.getInfo()));
+        System.out.println();
     }
 }
