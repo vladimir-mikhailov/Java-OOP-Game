@@ -1,6 +1,4 @@
-package in.mikhailov;
-
-import java.util.ArrayList;
+package in.mikhailov.heroes;
 
 public class Magician extends Hero {
 
@@ -25,11 +23,11 @@ public class Magician extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> heroesParty) {
+    public void step() {
         int lowestHealthHeroIndex = 0;
-        int lowestHealthPoints = heroesParty.get(0).getHealth();
-        for (int i = 1; i < heroesParty.size(); i++) {
-            Hero currentHero = heroesParty.get(i);
+        int lowestHealthPoints = super.team.get(0).getHealth();
+        for (int i = 1; i < super.team.size(); i++) {
+            Hero currentHero = super.team.get(i);
             int currentHeroHealth = currentHero.getHealth();
             if (currentHeroHealth < lowestHealthPoints && !currentHero.getClass().getName().contains("Peasant")) {
                 lowestHealthPoints = currentHeroHealth;
@@ -37,14 +35,14 @@ public class Magician extends Hero {
             }
         }
 
-        Hero damagedHero = heroesParty.get(lowestHealthHeroIndex);
+        Hero damagedHero = super.team.get(lowestHealthHeroIndex);
         if (damagedHero.getMaxHealth() != lowestHealthPoints) {
             int newHealthPoints = Math.min((lowestHealthPoints + this.getAttack()), damagedHero.getMaxHealth());
             damagedHero.setHealth(newHealthPoints);
             System.out.println(this.getName() + " heals " + damagedHero.getName() + " +" + (newHealthPoints - lowestHealthPoints) + " health points");
             System.out.println("  =>  " + damagedHero.getInfo());
         } else {
-            System.out.println("Party's HP are full");
+            System.out.println(className + " " + name + " tries to heal teammates, but their HP are full");
         }
     }
 

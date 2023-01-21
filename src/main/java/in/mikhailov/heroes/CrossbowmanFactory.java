@@ -1,4 +1,4 @@
-package in.mikhailov;
+package in.mikhailov.heroes;
 
 public class CrossbowmanFactory implements HeroFactory{
     @Override

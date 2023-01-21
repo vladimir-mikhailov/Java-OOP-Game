@@ -1,4 +1,4 @@
-package in.mikhailov;
+package in.mikhailov.heroes;
 
 public class SniperFactory implements HeroFactory{
     @Override

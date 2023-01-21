@@ -1,4 +1,4 @@
-package in.mikhailov;
+package in.mikhailov.heroes;
 
 public class Monk extends Magician {
     private Monk(int attack, int defense, int[] damage, int maxHealth, int speed, String name, int mana) {

@@ -4,8 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="feat: Magician can heal his party mates">
+    <list default="true" id="5c1d5239-61f4-49b4-971a-5ad0b252f09c" name="Changes" comment="refactor: packages, groups, iterators, sort, main">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/groups/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/groups/GroupFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/groups/GroupInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/groups/Team.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/groups/TeamFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Archer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Crossbowman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/CrossbowmanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/CrossbowmanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/HeroFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/HeroFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/HeroInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/HeroInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Magician.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Monk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/MonkFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/MonkFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Peasant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/PeasantFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/PeasantFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/RandomFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/RandomFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Roque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Roque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/RoqueFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/RoqueFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Sniper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/SniperFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/SniperFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Spearman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/SpearmanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/SpearmanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/in/mikhailov/WizardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/in/mikhailov/heroes/WizardFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,15 +43,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="seminar2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,7 +120,7 @@
       <module name="game" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="in.mikhailov.*" />
+          <option name="PATTERN" value="in.mikhailov.heroes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,6 +143,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -167,6 +196,7 @@
     <MESSAGE value="seminar 1 homework" />
     <MESSAGE value="refactor" />
     <MESSAGE value="feat: Magician can heal his party mates" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Magician can heal his party mates" />
+    <MESSAGE value="refactor: packages, groups, iterators, sort, main" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: packages, groups, iterators, sort, main" />
   </component>
 </project>

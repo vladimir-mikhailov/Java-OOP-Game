@@ -1,6 +1,4 @@
-package in.mikhailov;
-
-import java.util.ArrayList;
+package in.mikhailov.heroes;
 
 public class Peasant extends Hero {
     private boolean isCarrier;
@@ -24,7 +22,7 @@ public class Peasant extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> heroesParty) {
+    public void step() {
 
     }
 

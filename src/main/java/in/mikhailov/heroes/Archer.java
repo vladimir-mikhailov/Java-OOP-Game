@@ -1,6 +1,4 @@
-package in.mikhailov;
-
-import java.util.ArrayList;
+package in.mikhailov.heroes;
 
 public class Archer extends Hero {
     private int shots;
@@ -16,7 +14,7 @@ public class Archer extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> heroesParty) {
+    public void step() {
 
     }
 
