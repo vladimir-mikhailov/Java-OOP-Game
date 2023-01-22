@@ -1,5 +1,7 @@
 package in.mikhailov.heroes;
 
+import java.util.Iterator;
+
 public class Magician extends Hero {
 
     private int mana;
@@ -24,25 +26,24 @@ public class Magician extends Hero {
 
     @Override
     public void step() {
-        int lowestHealthHeroIndex = 0;
-        int lowestHealthPoints = super.team.get(0).getHealth();
-        for (int i = 1; i < super.team.size(); i++) {
-            Hero currentHero = super.team.get(i);
-            int currentHeroHealth = currentHero.getHealth();
-            if (currentHeroHealth < lowestHealthPoints && !currentHero.getClass().getName().contains("Peasant")) {
-                lowestHealthPoints = currentHeroHealth;
-                lowestHealthHeroIndex = i;
+        Hero lowestHealthHero = null;
+        int lowestHealthPoints = 5000;
+        for (Hero hero: team) {
+            if (hero.getHealth() < lowestHealthPoints && !hero.getClassName().equals("Peasant")) {
+                lowestHealthPoints = hero.getHealth();
+                lowestHealthHero = hero;
             }
+                        
         }
 
-        Hero damagedHero = super.team.get(lowestHealthHeroIndex);
-        if (damagedHero.getMaxHealth() != lowestHealthPoints) {
-            int newHealthPoints = Math.min((lowestHealthPoints + this.getAttack()), damagedHero.getMaxHealth());
-            damagedHero.setHealth(newHealthPoints);
-            System.out.println(this.getName() + " heals " + damagedHero.getName() + " +" + (newHealthPoints - lowestHealthPoints) + " health points");
-            System.out.println("  =>  " + damagedHero.getInfo());
+        assert lowestHealthHero != null;
+        if (lowestHealthHero.getMaxHealth() != lowestHealthPoints) {
+            int newHealthPoints = Math.min((lowestHealthPoints + this.getAttack()), lowestHealthHero.getMaxHealth());
+            lowestHealthHero.setHealth(newHealthPoints);
+            System.out.println(this.getName() + " heals " + lowestHealthHero.getName() + " +" + (newHealthPoints - lowestHealthPoints) + " health points.");
+            System.out.println("  =>  " + lowestHealthHero.getInfo());
         } else {
-            System.out.println(className + " " + name + " tries to heal teammates, but their HP are full");
+            System.out.println(className + " " + name + " tries to heal teammates, but their HP are full.");
         }
     }
 
