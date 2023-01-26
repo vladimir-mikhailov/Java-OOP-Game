@@ -1,7 +1,5 @@
 package in.mikhailov.heroes;
 
-import java.util.Iterator;
-
 public class Magician extends Hero {
 
     private int mana;
@@ -13,7 +11,7 @@ public class Magician extends Hero {
 
     @Override
     public String toString() {
-        return super.toString() + ", mana=" + mana;
+        return super.toString() + " 🪄" + mana;
     }
 
     public int getMana() {

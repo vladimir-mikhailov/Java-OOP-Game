@@ -5,7 +5,7 @@ import in.mikhailov.heroes.Hero;
 import java.util.*;
 import com.github.javafaker.Faker;
 
-abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
+abstract class Group implements GroupInterface, Iterable<Hero> {
     protected List<Hero> group;
     int capacity;
     int index;
@@ -20,6 +20,10 @@ abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
 
     public Group() {
         this((new Faker()).lordOfTheRings().location());
+    }
+
+    public List<Hero> getHeroes() {
+        return group;
     }
 
     public int getCapacity() {
@@ -57,19 +61,6 @@ abstract class Group implements GroupInterface, Iterator<Hero>, Iterable<Hero> {
         group.remove(hero);
     }
 
-    @Override
-    public boolean hasNext() {
-        if (index < capacity) {
-            return true;
-        }
-        index = 0;
-        return false;
-    }
-
-    @Override
-    public Hero next() {
-        return group.get(index++);
-    }
 
     @Override
     public Iterator<Hero> iterator() {

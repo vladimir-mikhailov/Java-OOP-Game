@@ -1,63 +1,80 @@
 package in.mikhailov;
 
-import in.mikhailov.groups.Team;
-import in.mikhailov.groups.TeamFactory;
+import in.mikhailov.battle.*;
+import in.mikhailov.battleField.BattleField;
+import in.mikhailov.groups.*;
 import in.mikhailov.heroes.*;
+import in.mikhailov.views.*;
 
-import java.util.Scanner;
+import java.util.*;
+
 
 public class Main {
-    public static void main(String[] args) {
+    static Team team1;
+    static Team team2;
+    static Battle battle;
 
-        RandomFactory team1RandomFactory = new RandomFactory(new HeroFactory[]{
+    public static void main(String[] args) {
+        init();
+        startBattle();
+    }
+
+    public static void init() {
+        List<Team> teams = getTeams();
+        team1 = teams.get(0);
+        team2 = teams.get(1);
+        BattleField battleField = new BattleField();
+        battle = new Battle(team1, team2, battleField);
+    }
+
+    public static void startBattle() {
+        ConsoleView.printBattleStatus(battle);
+        System.out.println();
+        ConsoleView.printMenu("start");
+
+        Scanner input = new Scanner(System.in);
+        while (input.hasNextLine()) {
+            if (input.nextLine().isEmpty()) {
+                battle.nextRound();
+
+                ConsoleView.printRoundReport();
+                ConsoleView.printBattleStatus(battle);
+                System.out.println();
+                ConsoleView.printMenu("nextRound");
+            }
+        }
+    }
+
+    public static List<Team> getTeams() {
+        List<Team> teams = new ArrayList<>(2);
+
+        TeamFactory teamFactory = new TeamFactory();
+        Team team1 = teamFactory.create();
+        team1.setColor("red");
+        RandomFactory randomFactoryTeam1 = new RandomFactory(new HeroFactory[]{
                 new PeasantFactory(),
                 new RoqueFactory(),
                 new SniperFactory(),
                 new WizardFactory()
         });
+        while (team1.getSize() < team1.getCapacity()) {
+            team1.add(randomFactoryTeam1.create());
+        }
+        teams.add(team1);
 
-        RandomFactory team2RandomFactory = new RandomFactory(new HeroFactory[]{
+        Team team2 = teamFactory.create();
+        team2.setColor("white");
+        RandomFactory randomFactoryTeam2 = new RandomFactory(new HeroFactory[]{
                 new CrossbowmanFactory(),
                 new MonkFactory(),
                 new PeasantFactory(),
                 new SpearmanFactory(),
         });
-
-        TeamFactory teamFactory = new TeamFactory();
-        Team dreamTeam1 = teamFactory.create();
-        Team dreamTeam2 = teamFactory.create();
-
-        while (dreamTeam1.getSize() < dreamTeam1.getCapacity()) {
-            dreamTeam1.add(team1RandomFactory.create());
+        while (team2.getSize() < team2.getCapacity()) {
+            team2.add(randomFactoryTeam2.create());
         }
+        teams.add(team2);
 
-        while (dreamTeam2.getSize() < dreamTeam2.getCapacity()) {
-            dreamTeam2.add(team2RandomFactory.create());
-        }
-
-        printTeamStatus(dreamTeam1);
-        printTeamStatus(dreamTeam2);
-
-        System.out.print("\n Для продолжения нажмите <Enter>, для выхода <Q>: ");
-
-        Scanner input = new Scanner(System.in);
-        while (input.hasNextLine()) {
-            if (input.nextLine().isEmpty()) {
-                printTeamStatus(dreamTeam1);
-                printTeamStatus(dreamTeam2);
-
-                dreamTeam1.makeMove();
-                dreamTeam2.makeMove();
-
-                System.out.print("\n Для продолжения нажмите <Enter>, для выхода <Q>: ");
-            }
-        }
-    }
-
-    private static void printTeamStatus(Team team) {
-        System.out.println(team.getName() + " Castle Heroes:");
-        //team.sort("className");
-        team.forEach(hero -> System.out.println(hero.getInfo()));
-        System.out.println();
+        return teams;
     }
 }

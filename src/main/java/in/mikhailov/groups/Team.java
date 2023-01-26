@@ -4,6 +4,7 @@ import in.mikhailov.heroes.Hero;
 import in.mikhailov.heroes.Peasant;
 
 public class Team extends Group {
+    private String color;
 
     public Team() {
         super();
@@ -41,13 +42,21 @@ public class Team extends Group {
         return null;
     }
 
-    public void makeMove() {
-        System.out.println("\nTeam " + name + " moves:");
+    public void makeMove(Team enemyTeam) {
+        System.out.println("\nTeam \"" + name + "\" moves:");
         group.forEach(hero -> {
             if (!hero.getClassName().equals("Peasant")) hero.step();
         });
         group.forEach(hero -> {
             if (hero.getClassName().equals("Peasant")) hero.step();
         });
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

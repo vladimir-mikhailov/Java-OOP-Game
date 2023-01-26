@@ -1,22 +1,20 @@
 package in.mikhailov.heroes;
 
 import com.github.javafaker.Faker;
-import in.mikhailov.groups.*;
-
-import java.util.Arrays;
+import in.mikhailov.battleField.Cell;
+import in.mikhailov.groups.Team;
 
 public abstract class Hero implements HeroInterface {
     protected String name;
+    protected Team team;
+    protected String className;
     private int attack;
     private int defense;
     private int maxHealth;
     private int health;
     private int speed;
     private int[] damage;
-    protected Team team;
-    protected String className;
-
-
+    private Cell cell;
 
     protected Hero(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
         this.attack = attack;
@@ -45,20 +43,24 @@ public abstract class Hero implements HeroInterface {
         this.defense = defense;
     }
 
-    protected int getMaxHealth() { return maxHealth; }
+    protected int getMaxHealth() {
+        return maxHealth;
+    }
 
-    protected void setMaxHealth(int maxHealth) { this.maxHealth = maxHealth; }
+    protected void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
 
     public int getHealth() {
         return health;
     }
 
-    public String getClassName() {
-        return className;
-    }
-
     protected void setHealth(int health) {
         this.health = health;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
     protected int getSpeed() {
@@ -77,7 +79,7 @@ public abstract class Hero implements HeroInterface {
         this.damage = damage;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
@@ -87,26 +89,35 @@ public abstract class Hero implements HeroInterface {
 
     @Override
     public String toString() {
-        return  className +
-                " name='" + name + '\'' +
-                ", attack=" + attack +
-                ", defense=" + defense +
-                ", damage=" + Arrays.toString(damage) +
-                ", health: " + this.health + "/" + maxHealth +
-                ", speed=" + speed;
+        return name + ": " + className + getInfo();
     }
 
     @Override
     public String getInfo() {
-        return name + ", " + className + " >> Health: " + this.health + "/" + maxHealth;
+        return String.format("%-8s", "💚" + this.health + "/" + maxHealth) +
+                String.format("%-5s", "⚔️" + attack) +
+                String.format("%-7s", "👊" + (damage[0] == damage[1] ? damage[0] : damage[0] + "-" + damage[1])) +
+                String.format("%-6s", "🛡️" + defense) +
+                String.format("%-5s", "🏃" + speed);
     }
 
+    public char getChar() {
+        return className.charAt(0);
+    }
+
+    public Team getTeam() {
+        return team;
+    }
 
     public void setTeam(Team team) {
         this.team = team;
     }
 
-    public Team getTeam() {
-        return team;
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 }
