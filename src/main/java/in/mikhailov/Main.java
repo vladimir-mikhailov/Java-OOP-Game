@@ -6,9 +6,7 @@ import in.mikhailov.groups.*;
 import in.mikhailov.heroes.*;
 import in.mikhailov.views.*;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -22,9 +20,9 @@ public class Main {
     }
 
     public static void init() {
-        Iterator<Team> teams = getTeams().iterator();
-        team1 = teams.next();
-        team2 = teams.next();
+        List<Team> teams = getTeams();
+        team1 = teams.get(0);
+        team2 = teams.get(1);
         BattleField battleField = new BattleField();
         battle = new Battle(team1, team2, battleField);
     }
@@ -47,8 +45,8 @@ public class Main {
         }
     }
 
-    public static HashSet<Team> getTeams() {
-        HashSet<Team> teams = new HashSet<>(2);
+    public static List<Team> getTeams() {
+        List<Team> teams = new ArrayList<>(2);
 
         TeamFactory teamFactory = new TeamFactory();
         Team team1 = teamFactory.create();
