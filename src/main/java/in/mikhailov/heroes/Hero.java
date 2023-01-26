@@ -1,7 +1,7 @@
 package in.mikhailov.heroes;
 
 import com.github.javafaker.Faker;
-import in.mikhailov.battleField.Cell;
+import in.mikhailov.battle.Cell;
 import in.mikhailov.groups.Team;
 
 public abstract class Hero implements HeroInterface {

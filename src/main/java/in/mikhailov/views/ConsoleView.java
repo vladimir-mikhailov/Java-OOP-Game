@@ -1,7 +1,7 @@
 package in.mikhailov.views;
 
 import in.mikhailov.battle.Battle;
-import in.mikhailov.battleField.Cell;
+import in.mikhailov.battle.Cell;
 import in.mikhailov.groups.Team;
 import in.mikhailov.heroes.Hero;
 

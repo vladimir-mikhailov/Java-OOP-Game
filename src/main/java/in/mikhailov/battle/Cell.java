@@ -1,4 +1,4 @@
-package in.mikhailov.battleField;
+package in.mikhailov.battle;
 
 import in.mikhailov.heroes.Hero;
 

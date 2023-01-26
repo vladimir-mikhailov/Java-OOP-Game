@@ -1,7 +1,7 @@
 package in.mikhailov;
 
 import in.mikhailov.battle.*;
-import in.mikhailov.battleField.BattleField;
+import in.mikhailov.battle.BattleField;
 import in.mikhailov.groups.*;
 import in.mikhailov.heroes.*;
 import in.mikhailov.views.*;
