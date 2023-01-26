@@ -20,7 +20,7 @@ public class Peasant extends Hero {
 
     @Override
     public String toString() {
-        return super.toString() + ", isCarrier=" + isCarrier;
+        return super.toString() + (isCarrier ? " 🏋️‍♂️" : "");
     }
 
     @Override

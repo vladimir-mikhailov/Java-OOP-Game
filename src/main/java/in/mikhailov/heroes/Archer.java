@@ -26,12 +26,13 @@ public class Archer extends Hero {
 
     @Override
     public String toString() {
-        return super.toString() + ", shots=" + shots;
+        return super.toString() + " 🏹" + shots;
     }
 
     @Override
     public String getInfo() {
-        return super.getInfo() + ", Shots: " + shots + "/" + maxShots + ".";
+        return super.getInfo() +
+                String.format("%-8s", "🏹" + shots + "/" + maxShots);
     }
 
     @Override
