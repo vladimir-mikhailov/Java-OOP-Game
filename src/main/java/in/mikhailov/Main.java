@@ -41,7 +41,7 @@ public class Main {
                 ConsoleView.printBattleStatus(battle);
                 System.out.println();
                 ConsoleView.printMenu("nextRound");
-            }
+            } else break;
         }
     }
 
