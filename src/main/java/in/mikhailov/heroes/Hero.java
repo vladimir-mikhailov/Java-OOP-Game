@@ -101,6 +101,13 @@ public abstract class Hero implements HeroInterface {
                 String.format("%-5s", "🏃" + speed);
     }
 
+    @Override
+    public void takeDamage(float damageCaused) {
+        if (health - damageCaused < 0) health = 0;
+        else if (health + damageCaused > maxHealth) health = maxHealth;
+        else health -= damageCaused;
+    }
+
     public char getChar() {
         return className.charAt(0);
     }
