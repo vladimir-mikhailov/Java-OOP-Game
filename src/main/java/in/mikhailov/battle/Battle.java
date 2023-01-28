@@ -2,11 +2,13 @@ package in.mikhailov.battle;
 
 import in.mikhailov.groups.Team;
 import in.mikhailov.heroes.Hero;
+import in.mikhailov.views.AnsiColors;
 
 import java.util.List;
 
 public class Battle {
     private int round;
+    private Team winner;
     private final Team team1;
     private final Team team2;
     private final BattleField battleField;
@@ -15,6 +17,8 @@ public class Battle {
         this.round = 1;
         this.team1 = team1;
         this.team2 = team2;
+        this.team1.setOpponentTeam(team2);
+        this.team2.setOpponentTeam(team1);
         this.battleField = battleField;
         arrangeTeams();
     }
@@ -44,9 +48,26 @@ public class Battle {
     }
 
     public void nextRound() {
-        team1.makeMove(team2);
-        team2.makeMove(team1);
+        System.out.println("\n" + "Round " + getRound());
+
+        if (team1.getColor().equals("red")) System.out.print(AnsiColors.ANSI_RED);
+        team1.makeMove();
+        if (team1.getColor().equals("red")) System.out.print(AnsiColors.ANSI_RESET);
+
+        team2.makeMove();
+
+        if (team1.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) setWinner(team2);
+        else if (team2.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) setWinner(team1);
+
         round++;
+    }
+
+    public Team getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Team winner) {
+        this.winner = winner;
     }
 
     public int getRound() {

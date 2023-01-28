@@ -5,6 +5,7 @@ import in.mikhailov.heroes.Peasant;
 
 public class Team extends Group {
     private String color;
+    private Team opponentTeam;
 
     public Team() {
         super();
@@ -19,7 +20,7 @@ public class Team extends Group {
     }
 
     public boolean hasFreePeasant() {
-        for (Hero hero: group) {
+        for (Hero hero : group) {
             if (hero.getClassName().equals("Peasant")) {
                 Peasant peasant = (Peasant) hero;
                 if (peasant.isFree()) {
@@ -31,7 +32,7 @@ public class Team extends Group {
     }
 
     public Peasant nextFreePeasant() {
-        for (Hero hero: group) {
+        for (Hero hero : group) {
             if (hero.getClassName().equals("Peasant")) {
                 Peasant peasant = (Peasant) hero;
                 if (peasant.isFree()) {
@@ -42,7 +43,7 @@ public class Team extends Group {
         return null;
     }
 
-    public void makeMove(Team enemyTeam) {
+    public void makeMove() {
         System.out.println("\nTeam \"" + name + "\" moves:");
         group.forEach(hero -> {
             if (!hero.getClassName().equals("Peasant")) hero.step();
@@ -58,5 +59,13 @@ public class Team extends Group {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Team getOpponentTeam() {
+        return opponentTeam;
+    }
+
+    public void setOpponentTeam(Team opponentTeam) {
+        this.opponentTeam = opponentTeam;
     }
 }

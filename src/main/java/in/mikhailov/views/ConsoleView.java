@@ -114,16 +114,19 @@ public class ConsoleView {
                     Cell currentCell = columns.get(x).get(y);
                     if (currentCell.getHero() != null) {
                         boolean isRedTeam = currentCell.getHero().getTeam().getColor().equals("red");
+                        boolean isDead = currentCell.getHero().getHealth() == 0;
                         innerCells.append(isRedTeam ? AnsiColors.ANSI_RED : "");
+                        innerCells.append(isDead? AnsiColors.ANSI_STRIKED : "");
                         innerCells.append(currentCell);
-                        innerCells.append(isRedTeam ? AnsiColors.ANSI_RESET : "");
+                        innerCells.append(AnsiColors.ANSI_RESET);
+
                     } else {
                         innerCells.append(currentCell);
                     }
                     if (x!=9) innerCells.append("│");
                 }
 
-                field[i] =  "│"  + innerCells + "│";
+                field[i] =  "│"  + innerCells + "│" + " ".repeat(8);
                 y++;
             }
 

@@ -3,6 +3,7 @@ package in.mikhailov.heroes;
 public class Archer extends Hero {
     private int maxShots;
     private int shots;
+    private int range;
 
     public Archer(int attack, int defense, int[] damage, int maxHealth, int speed, String name, int maxShots) {
         super(attack, defense, damage, maxHealth, speed, name);
@@ -17,11 +18,22 @@ public class Archer extends Hero {
     public void setMaxShots(int maxShots) {
         this.maxShots = maxShots;
     }
+
     public int getShots() {
         return shots;
     }
+
     public void setShots(int shots) {
-        this.shots = shots;
+        if (shots > this.maxShots) this.shots = this.maxShots;
+        else this.shots = Math.max(shots, 0);
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 
     @Override
@@ -37,17 +49,35 @@ public class Archer extends Hero {
 
     @Override
     public void step() {
+        if (this.getHealth() == 0) return;
         if (shots > 0) {
-            System.out.println(className + " " + name + " shoots." );
-            if (team.hasFreePeasant()) {
-                Peasant freePeasant = team.nextFreePeasant();
-                System.out.println(freePeasant.className + " " + freePeasant.name + " brought an arrow to " + className + " " + name + ".");
-                freePeasant.setFree(false);
-            } else {
+            Hero opponentHero = getNearestOpponent().keySet().stream().toList().get(0);
+            float distance = getNearestOpponent().values().stream().toList().get(0);
+
+            if (opponentHero != null) {
+                float damageAmount;
+                final float MAX_DISTANCE = 12.7279f;
+                int minDamage = this.getDamage()[0];
+                int maxDamage = this.getDamage()[1];
+                if (distance <= this.getRange()) damageAmount = maxDamage;
+                else {
+                    float coefficient = (distance - range) / (MAX_DISTANCE - range);
+                    damageAmount = minDamage + coefficient * (maxDamage - minDamage);
+                }
+                if (opponentHero.getDefense() > this.getAttack()) damageAmount--;
+                else if (opponentHero.getDefense() < this.getAttack()) damageAmount++;
+
                 shots--;
-                System.out.println(className + " " + name + " has " + shots + "/" + maxShots + " shots left." );
+                System.out.println(className + " " + name +
+                        " shoots at " + opponentHero.getClassName() + " " + opponentHero.getName() +
+                        " 👊" + (int) damageAmount + " 🏹" + shots + "/" + maxShots);
+                opponentHero.takeDamage(damageAmount);
+
+            } else {
+                System.out.println(this.getClassName() + " " + this.getName() + " wanted to shoot, but could not find the target.");
             }
-        } else System.out.println(className + " " + name + " tries to shoot, but he has run out of arrows." );
+
+        } else System.out.println(className + " " + name + " wanted to shoot, but he has run out of arrows.");
     }
 
 }
