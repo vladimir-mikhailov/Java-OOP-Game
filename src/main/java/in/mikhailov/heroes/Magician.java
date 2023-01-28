@@ -24,22 +24,20 @@ public class Magician extends Hero {
 
     @Override
     public void step() {
+        if (health == 0) return;
+
         Hero lowestHealthHero = null;
-        int lowestHealthPoints = 5000;
+        float lowestHealthPoints = 1000;
         for (Hero hero: team) {
-            if (hero.getHealth() < lowestHealthPoints && !hero.getClassName().equals("Peasant")) {
+            if (hero.getHealth() > 0 && hero.getHealth() < hero.getMaxHealth() && hero.getHealth() < lowestHealthPoints) {
                 lowestHealthPoints = hero.getHealth();
                 lowestHealthHero = hero;
             }
-                        
         }
 
-        assert lowestHealthHero != null;
-        if (lowestHealthHero.getMaxHealth() != lowestHealthPoints) {
-            int newHealthPoints = Math.min((lowestHealthPoints + this.getAttack()), lowestHealthHero.getMaxHealth());
-            lowestHealthHero.setHealth(newHealthPoints);
-            System.out.println(this.getName() + " heals " + lowestHealthHero.getName() + " +" + (newHealthPoints - lowestHealthPoints) + " health points.");
-            System.out.println("  =>  " + lowestHealthHero.getInfo());
+        if (lowestHealthHero != null) {
+            lowestHealthHero.takeDamage(this.getDamage()[0]);
+            System.out.println(this.getName() + " heals " + lowestHealthHero.getName() + " +" + -this.getDamage()[0] + " health points.");
         } else {
             System.out.println(className + " " + name + " tries to heal teammates, but their HP are full.");
         }

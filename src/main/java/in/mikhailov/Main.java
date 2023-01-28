@@ -40,8 +40,17 @@ public class Main {
                 ConsoleView.printRoundReport();
                 ConsoleView.printBattleStatus(battle);
                 System.out.println();
-                ConsoleView.printMenu("nextRound");
-            }
+
+                if (battle.getWinner() == null) ConsoleView.printMenu("nextRound");
+                else {
+                    Team winner = battle.getWinner();
+                    boolean isRed = winner.getColor().equals("red");
+                    if (isRed) System.out.print(AnsiColors.ANSI_RED);
+                    System.out.println(winner.getName() + " won 🎖️");
+                    if (isRed) System.out.print(AnsiColors.ANSI_RESET);
+                    break;
+                }
+            } else break;
         }
     }
 

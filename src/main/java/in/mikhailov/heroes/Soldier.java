@@ -7,6 +7,7 @@ public class Soldier extends Hero {
 
     @Override
     public void step() {
+        if (health == 0) return;
         System.out.println(className + " " + name + " is resting because he hasn't learned how to fight yet.");
     }
 }

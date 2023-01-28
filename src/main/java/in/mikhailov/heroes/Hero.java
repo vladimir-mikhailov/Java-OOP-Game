@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import in.mikhailov.battle.Cell;
 import in.mikhailov.groups.Team;
 
+import java.util.HashMap;
+
 public abstract class Hero implements HeroInterface {
     protected String name;
     protected Team team;
@@ -11,7 +13,7 @@ public abstract class Hero implements HeroInterface {
     private int attack;
     private int defense;
     private int maxHealth;
-    private int health;
+    protected float health;
     private int speed;
     private int[] damage;
     private Cell cell;
@@ -51,11 +53,11 @@ public abstract class Hero implements HeroInterface {
         this.maxHealth = maxHealth;
     }
 
-    public int getHealth() {
+    public float getHealth() {
         return health;
     }
 
-    protected void setHealth(int health) {
+    protected void setHealth(float health) {
         this.health = health;
     }
 
@@ -94,11 +96,21 @@ public abstract class Hero implements HeroInterface {
 
     @Override
     public String getInfo() {
-        return String.format("%-8s", "💚" + this.health + "/" + maxHealth) +
+        return String.format("%-8s", "💚" + (int) this.health + "/" + maxHealth) +
                 String.format("%-5s", "⚔️" + attack) +
                 String.format("%-7s", "👊" + (damage[0] == damage[1] ? damage[0] : damage[0] + "-" + damage[1])) +
                 String.format("%-6s", "🛡️" + defense) +
                 String.format("%-5s", "🏃" + speed);
+    }
+
+
+    @Override
+    public void takeDamage(float damageCaused) {
+        this.setHealth(this.getHealth() - damageCaused);
+        if (this.getHealth() < 0) this.setHealth(0);
+        else if (this.getHealth() > this.getMaxHealth()) this.setHealth(this.getMaxHealth());
+
+        if (health == 0) System.out.println(className + " " + name + " is dead ☠️");
     }
 
     public char getChar() {
@@ -119,5 +131,24 @@ public abstract class Hero implements HeroInterface {
 
     public void setCell(Cell cell) {
         this.cell = cell;
+    }
+
+    protected HashMap<Hero, Float> getNearestOpponent() {
+        HashMap<Hero, Float> nearestOpponent = new HashMap<>(1);
+        Hero nearestHero = null;
+        float minDistance = 15;
+        for (Hero oppHero: this.getTeam().getOpponentTeam()) {
+            if (oppHero.getHealth() > 0) {
+                int oppX = oppHero.getCell().getX();
+                int oppY = oppHero.getCell().getY();
+                float distance = (float) Math.sqrt(Math.pow(oppY - this.getCell().getY(),2) + Math.pow(oppX - this.getCell().getX(), 2));
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearestHero = oppHero;
+                }
+            }
+        }
+        nearestOpponent.put(nearestHero, minDistance);
+        return nearestOpponent;
     }
 }

@@ -1,5 +1,7 @@
 package in.mikhailov.heroes;
 
+import java.util.List;
+
 public class Peasant extends Hero {
     boolean isFree;
     private boolean isCarrier;
@@ -11,7 +13,7 @@ public class Peasant extends Hero {
     }
 
     public Peasant(String name) {
-        this(1, 1, new int[] {1, 1}, 1, 3, name);
+        this(1, 1, new int[]{1, 1}, 1, 3, name);
     }
 
     public Peasant() {
@@ -25,12 +27,22 @@ public class Peasant extends Hero {
 
     @Override
     public void step() {
-        if (!isFree) {
-            System.out.println(className + " " + name + " has done a good job and is free now.");
-            setFree(true);
-        } else {
-            System.out.println(className + " " + name + " is idle because there is no work for him.");
+        if (health == 0) return;
+
+        List<Archer> archers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("Archer")).map(hero -> (Archer) hero).toList();
+        Archer archerRecipient = null;
+        int minPercent = 100;
+        for (Archer archer : archers) {
+            if (archer.getShots() < archer.getMaxShots()) {
+                int currentPercent = archer.getShots() / archer.getMaxShots() * 100;
+                if (currentPercent < minPercent) minPercent = currentPercent;
+                archerRecipient = archer;
+            }
         }
+        if (archerRecipient != null) {
+            archerRecipient.setShots(archerRecipient.getShots() + 1);
+            System.out.println(className + " " + name + " brought an arrow to " + archerRecipient.getClassName() + " " + archerRecipient.getName());
+        } else System.out.println(className + " " + name + " wanted to bring an arrow to some archer, but no archers need more arrows.");
     }
 
     public boolean isCarrier() {
