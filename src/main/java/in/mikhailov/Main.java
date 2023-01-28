@@ -15,19 +15,17 @@ public class Main {
     static Battle battle;
 
     public static void main(String[] args) {
-        init();
         startBattle();
     }
 
-    public static void init() {
+
+    public static void startBattle() {
         List<Team> teams = getTeams();
         team1 = teams.get(0);
         team2 = teams.get(1);
         BattleField battleField = new BattleField();
         battle = new Battle(team1, team2, battleField);
-    }
 
-    public static void startBattle() {
         ConsoleView.printBattleStatus(battle);
         System.out.println();
         ConsoleView.printMenu("start");
@@ -35,7 +33,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         while (input.hasNextLine()) {
             if (input.nextLine().isEmpty()) {
-                battle.nextRound();
+                if (battle.getWinner() == null) battle.nextRound();
+                else startBattle();
 
                 ConsoleView.printRoundReport();
                 ConsoleView.printBattleStatus(battle);
@@ -48,7 +47,8 @@ public class Main {
                     if (isRed) System.out.print(AnsiColors.ANSI_RED);
                     System.out.println(winner.getName() + " won 🎖️");
                     if (isRed) System.out.print(AnsiColors.ANSI_RESET);
-                    break;
+
+                    ConsoleView.printMenu("newBattle");
                 }
             } else break;
         }

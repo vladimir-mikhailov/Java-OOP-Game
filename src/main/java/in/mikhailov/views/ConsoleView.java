@@ -145,6 +145,7 @@ public class ConsoleView {
         switch (type) {
             case "start" -> stringBuilder.append("Start Battle");
             case "nextRound" -> stringBuilder.append("Next Round");
+            case "newBattle" -> stringBuilder.append("New Battle");
         }
         stringBuilder.append(" – <Enter>, Exit – <Q>: ");
         System.out.print(stringBuilder);
