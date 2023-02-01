@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Peasant extends Hero {
     boolean isFree;
-    private boolean isCarrier;
+    private final boolean isCarrier;
 
     private Peasant(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
         super(attack, defense, damage, maxHealth, speed, name);
@@ -29,36 +29,20 @@ public class Peasant extends Hero {
     public void step() {
         if (health == 0) return;
 
-        List<Archer> archers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("Archer")).map(hero -> (Archer) hero).toList();
-        Archer archerRecipient = null;
+        List<RangeAttacker> rangeAttackers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("Archer")).map(hero -> (RangeAttacker) hero).toList();
+        RangeAttacker rangeAttackerRecipient = null;
         int minPercent = 100;
-        for (Archer archer : archers) {
-            if (archer.getShots() < archer.getMaxShots()) {
-                int currentPercent = archer.getShots() / archer.getMaxShots() * 100;
+        for (RangeAttacker rangeAttacker : rangeAttackers) {
+            if (rangeAttacker.getShots() < rangeAttacker.getMaxShots()) {
+                int currentPercent = rangeAttacker.getShots() / rangeAttacker.getMaxShots() * 100;
                 if (currentPercent < minPercent) minPercent = currentPercent;
-                archerRecipient = archer;
+                rangeAttackerRecipient = rangeAttacker;
             }
         }
-        if (archerRecipient != null) {
-            archerRecipient.setShots(archerRecipient.getShots() + 1);
-            System.out.println(className + " " + name + " brought an arrow to " + archerRecipient.getClassName() + " " + archerRecipient.getName());
+        if (rangeAttackerRecipient != null) {
+            rangeAttackerRecipient.setShots(rangeAttackerRecipient.getShots() + 1);
+            System.out.println(className + " " + name + " brought an arrow to " + rangeAttackerRecipient.getClassName() + " " + rangeAttackerRecipient.getName());
         } else System.out.println(className + " " + name + " wanted to bring an arrow to some archer, but no archers need more arrows.");
-    }
-
-    public boolean isCarrier() {
-        return isCarrier;
-    }
-
-    public void setCarrier(boolean carrier) {
-        isCarrier = carrier;
-    }
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
     }
 
 }

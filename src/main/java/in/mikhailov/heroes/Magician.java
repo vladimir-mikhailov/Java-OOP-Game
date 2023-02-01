@@ -37,9 +37,10 @@ public class Magician extends Hero {
 
         if (lowestHealthHero != null) {
             lowestHealthHero.takeDamage(this.getDamage()[0]);
-            System.out.println(this.getName() + " heals " + lowestHealthHero.getName() + " +" + -this.getDamage()[0] + " health points.");
+            System.out.println(this.getClassName() + " " + this.getName() +
+                    " heals " + lowestHealthHero.getName() + " +" + -this.getDamage()[0] + " health points.");
         } else {
-            System.out.println(className + " " + name + " tries to heal teammates, but their HP are full.");
+            System.out.println(className + " " + name + " wanted to heal teammates, but their HP are full.");
         }
     }
 

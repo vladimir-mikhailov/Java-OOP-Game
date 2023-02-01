@@ -1,12 +1,14 @@
 package in.mikhailov.heroes;
 
-public class Archer extends Hero {
+import java.util.HashMap;
+
+public abstract class RangeAttacker extends Hero {
     private int maxShots;
     private int shots;
     private int range;
 
-    public Archer(int attack, int defense, int[] damage, int maxHealth, int speed, String name, int maxShots) {
-        super(attack, defense, damage, maxHealth, speed, name);
+    public RangeAttacker(int attack, int defence, int[] damage, int maxHealth, int speed, String name, int maxShots) {
+        super(attack, defence, damage, maxHealth, speed, name);
         this.maxShots = maxShots;
         this.shots = this.maxShots;
     }
@@ -51,8 +53,9 @@ public class Archer extends Hero {
     public void step() {
         if (this.getHealth() == 0) return;
         if (shots > 0) {
-            Hero opponentHero = getNearestOpponent().keySet().stream().toList().get(0);
-            float distance = getNearestOpponent().values().stream().toList().get(0);
+            HashMap<Hero, Float> nearestOpponent = getNearestOpponent();
+            Hero opponentHero = nearestOpponent.keySet().stream().toList().get(0);
+            float distance = nearestOpponent.values().stream().toList().get(0);
 
             if (opponentHero != null) {
                 float damageAmount;

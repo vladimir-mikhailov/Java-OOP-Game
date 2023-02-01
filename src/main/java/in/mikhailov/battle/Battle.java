@@ -4,14 +4,16 @@ import in.mikhailov.groups.Team;
 import in.mikhailov.heroes.Hero;
 import in.mikhailov.views.AnsiColors;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Battle {
-    private int round;
-    private Team winner;
     private final Team team1;
     private final Team team2;
     private final BattleField battleField;
+    private int round;
+    private Team winner;
 
     public Battle(Team team1, Team team2, BattleField battleField) {
         this.round = 1;
@@ -24,7 +26,10 @@ public class Battle {
     }
 
     void arrangeTeams() {
-        List<Cell> leftColumn = battleField.getCells().stream().filter(cell -> cell.getX() == 0).toList();
+        List<Cell> leftColumn = battleField.getCells().stream()
+                .filter(cell -> cell.getX() == 0)
+                .sorted(Comparator.comparing(Cell::getY))
+                .toList();
         List<Hero> leftTeam = team1.getHeroes();
         int y = 0;
         while (y < battleField.getHeight()) {
@@ -50,17 +55,39 @@ public class Battle {
     public void nextRound() {
         System.out.println("\n" + "Round " + getRound());
 
-        if (team1.getColor().equals("red")) System.out.print(AnsiColors.ANSI_RED);
-        team1.makeMove();
-        if (team1.getColor().equals("red")) System.out.print(AnsiColors.ANSI_RESET);
+        List<Hero> liveHeroes = new ArrayList<>();
+        team1.getHeroes().forEach(hero -> {
+            if (hero.getHealth() > 0) liveHeroes.add(hero);
+        });
+        team2.getHeroes().forEach(hero -> {
+            if (hero.getHealth() > 0) liveHeroes.add(hero);
+        });
+        liveHeroes.sort(Comparator.comparing(Hero::getSpeed,Comparator.reverseOrder()));
 
-        team2.makeMove();
-
-        if (team1.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) setWinner(team2);
-        else if (team2.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) setWinner(team1);
+        for (Hero hero: liveHeroes) {
+            if (hero.getHealth() > 0) {
+                boolean isRed = hero.getTeam().getColor().equals("red");
+                if (isRed) System.out.print(AnsiColors.RED);
+                hero.step();
+                if (isRed) System.out.print(AnsiColors.RESET);
+            }
+            if (isGameOver()) break;
+        }
 
         round++;
     }
+
+    private boolean isGameOver() {
+        Team winner = null;
+        if (team1.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) winner = team2;
+        else if (team2.getHeroes().stream().noneMatch(hero -> hero.getHealth() > 0)) winner = team1;
+        if (winner != null) {
+            setWinner(winner);
+            return true;
+        }
+        return false;
+    }
+
 
     public Team getWinner() {
         return winner;

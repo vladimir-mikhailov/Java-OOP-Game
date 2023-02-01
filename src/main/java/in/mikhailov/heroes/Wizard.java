@@ -6,7 +6,7 @@ public class Wizard extends Magician {
     }
 
     public Wizard(String name) {
-        this(17, 12, new int[]{-5, -5}, 30, 9, name, 1);
+        this(17, 4, new int[]{-5, -5}, 30, 4, name, 1);
     }
 
     public Wizard() {

@@ -1,65 +1,27 @@
 package in.mikhailov.groups;
 
 import in.mikhailov.heroes.Hero;
-import in.mikhailov.heroes.Peasant;
 
 public class Team extends Group {
-    private String color;
+    private final String color;
     private Team opponentTeam;
 
-    public Team() {
+    public Team(String color) {
         super();
-        super.capacity = 10;
+        this.setCapacity(10);
+        this.color = color;
     }
 
     @Override
-    public boolean add(Hero hero) {
+    public void add(Hero hero) {
         super.add(hero);
         hero.setTeam(this);
-        return super.group.contains(hero) && hero.getTeam() == this;
-    }
-
-    public boolean hasFreePeasant() {
-        for (Hero hero : group) {
-            if (hero.getClassName().equals("Peasant")) {
-                Peasant peasant = (Peasant) hero;
-                if (peasant.isFree()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public Peasant nextFreePeasant() {
-        for (Hero hero : group) {
-            if (hero.getClassName().equals("Peasant")) {
-                Peasant peasant = (Peasant) hero;
-                if (peasant.isFree()) {
-                    return peasant;
-                }
-            }
-        }
-        return null;
-    }
-
-    public void makeMove() {
-        System.out.println("\nTeam \"" + name + "\" moves:");
-        group.forEach(hero -> {
-            if (!hero.getClassName().equals("Peasant")) hero.step();
-        });
-        group.forEach(hero -> {
-            if (hero.getClassName().equals("Peasant")) hero.step();
-        });
     }
 
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public Team getOpponentTeam() {
         return opponentTeam;

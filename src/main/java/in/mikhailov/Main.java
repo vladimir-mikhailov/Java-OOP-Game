@@ -44,9 +44,9 @@ public class Main {
                 else {
                     Team winner = battle.getWinner();
                     boolean isRed = winner.getColor().equals("red");
-                    if (isRed) System.out.print(AnsiColors.ANSI_RED);
+                    if (isRed) System.out.print(AnsiColors.RED);
                     System.out.println(winner.getName() + " won 🎖️");
-                    if (isRed) System.out.print(AnsiColors.ANSI_RESET);
+                    if (isRed) System.out.print(AnsiColors.RESET);
 
                     ConsoleView.printMenu("newBattle");
                 }
@@ -57,9 +57,7 @@ public class Main {
     public static List<Team> getTeams() {
         List<Team> teams = new ArrayList<>(2);
 
-        TeamFactory teamFactory = new TeamFactory();
-        Team team1 = teamFactory.create();
-        team1.setColor("red");
+        Team team1 = new Team("red");
         RandomFactory randomFactoryTeam1 = new RandomFactory(new HeroFactory[]{
                 new PeasantFactory(),
                 new RoqueFactory(),
@@ -71,8 +69,7 @@ public class Main {
         }
         teams.add(team1);
 
-        Team team2 = teamFactory.create();
-        team2.setColor("white");
+        Team team2 = new Team("white");
         RandomFactory randomFactoryTeam2 = new RandomFactory(new HeroFactory[]{
                 new CrossbowmanFactory(),
                 new MonkFactory(),
