@@ -29,7 +29,7 @@ public class Peasant extends Hero {
     public void step() {
         if (health == 0) return;
 
-        List<RangeAttacker> rangeAttackers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("Archer")).map(hero -> (RangeAttacker) hero).toList();
+        List<RangeAttacker> rangeAttackers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("RangeAttacker")).map(hero -> (RangeAttacker) hero).toList();
         RangeAttacker rangeAttackerRecipient = null;
         int minPercent = 100;
         for (RangeAttacker rangeAttacker : rangeAttackers) {
