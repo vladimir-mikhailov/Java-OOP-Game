@@ -6,7 +6,7 @@ public class Monk extends Magician {
     }
 
     public Monk(String name) {
-        this(12, 7, new int[]{-4, -4}, 30, 5, name, 1);
+        this(12, 7, new int[]{-4, -4}, 30, 4, name, 1);
     }
 
     public Monk() {

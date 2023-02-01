@@ -2,18 +2,19 @@ package in.mikhailov.heroes;
 
 import com.github.javafaker.Faker;
 import in.mikhailov.battle.Cell;
+import in.mikhailov.battle.Direction;
 import in.mikhailov.groups.Team;
 
 import java.util.HashMap;
 
-public abstract class Hero implements HeroInterface {
+public abstract class Hero implements IHero {
     protected String name;
     protected Team team;
     protected String className;
+    protected float health;
     private int attack;
     private int defense;
     private int maxHealth;
-    protected float health;
     private int speed;
     private int[] damage;
     private Cell cell;
@@ -27,6 +28,26 @@ public abstract class Hero implements HeroInterface {
         this.speed = speed;
         this.name = name.isEmpty() ? (new Faker()).name().firstName() : name;
         this.className = this.getClass().getName().split("\\.")[3];
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hero hero = (Hero) o;
+
+        if (!getName().equals(hero.getName())) return false;
+        if (!getTeam().equals(hero.getTeam())) return false;
+        return getClassName().equals(hero.getClassName());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getTeam().hashCode();
+        result = 31 * result + getClassName().hashCode();
+        return result;
     }
 
     protected int getAttack() {
@@ -65,7 +86,7 @@ public abstract class Hero implements HeroInterface {
         return className;
     }
 
-    protected int getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
@@ -107,14 +128,17 @@ public abstract class Hero implements HeroInterface {
     @Override
     public void takeDamage(float damageCaused) {
         this.setHealth(this.getHealth() - damageCaused);
-        if (this.getHealth() < 0) this.setHealth(0);
-        else if (this.getHealth() > this.getMaxHealth()) this.setHealth(this.getMaxHealth());
+        if (this.getHealth() < 0) {
+            this.setHealth(0);
+            die();
+        } else if (this.getHealth() > this.getMaxHealth()) this.setHealth(this.getMaxHealth());
 
         if (health == 0) System.out.println(className + " " + name + " is dead ☠️");
     }
 
-    public char getChar() {
-        return className.charAt(0);
+    protected void die() {
+        cell.addDeadHero(this);
+        cell.setHero(null);
     }
 
     public Team getTeam() {
@@ -137,11 +161,11 @@ public abstract class Hero implements HeroInterface {
         HashMap<Hero, Float> nearestOpponent = new HashMap<>(1);
         Hero nearestHero = null;
         float minDistance = 15;
-        for (Hero oppHero: this.getTeam().getOpponentTeam()) {
+        for (Hero oppHero : this.getTeam().getOpponentTeam()) {
             if (oppHero.getHealth() > 0) {
                 int oppX = oppHero.getCell().getX();
                 int oppY = oppHero.getCell().getY();
-                float distance = (float) Math.sqrt(Math.pow(oppY - this.getCell().getY(),2) + Math.pow(oppX - this.getCell().getX(), 2));
+                float distance = (float) Math.sqrt(Math.pow(oppY - this.getCell().getY(), 2) + Math.pow(oppX - this.getCell().getX(), 2));
                 if (distance < minDistance) {
                     minDistance = distance;
                     nearestHero = oppHero;
@@ -150,5 +174,33 @@ public abstract class Hero implements HeroInterface {
         }
         nearestOpponent.put(nearestHero, minDistance);
         return nearestOpponent;
+    }
+
+    protected void move(Direction direction) {
+        Cell targetCell = this.cell.getAdjacentCells().get(direction);
+        if (targetCell != null && targetCell.getHero() == null) {
+            this.getCell().setHero(null);
+            this.setCell(targetCell);
+            targetCell.setHero(this);
+        }
+    }
+
+    protected Direction getNextMoveDirection(Hero opponentHero) {
+        if (opponentHero != null) {
+            int opponentX = opponentHero.getCell().getX();
+            int opponentY = opponentHero.getCell().getY();
+            int heroX = this.getCell().getX();
+            int heroY = this.getCell().getY();
+            int deltaX = opponentX - heroX;
+            int deltaY = opponentY - heroY;
+
+            Direction direction;
+            if (Math.abs(deltaY) < Math.abs(deltaX)) {
+                direction = deltaX > 0 ? Direction.RIGHT : Direction.LEFT;
+            } else {
+                direction = deltaY > 0 ? Direction.UP : Direction.DOWN;
+            }
+            return direction;
+        } else return null;
     }
 }
