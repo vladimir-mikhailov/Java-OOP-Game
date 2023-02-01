@@ -1,6 +1,6 @@
 package in.mikhailov.heroes;
 
-public class Magician extends Hero {
+public abstract class Magician extends Hero {
 
     private int mana;
 
@@ -38,7 +38,7 @@ public class Magician extends Hero {
         if (lowestHealthHero != null) {
             lowestHealthHero.takeDamage(this.getDamage()[0]);
             System.out.println(this.getClassName() + " " + this.getName() +
-                    " heals " + lowestHealthHero.getName() + " +" + -this.getDamage()[0] + " health points.");
+                    " heals " + lowestHealthHero.getName() + " 💚+" + -this.getDamage()[0]);
         } else {
             System.out.println(className + " " + name + " wanted to heal teammates, but their HP are full.");
         }
