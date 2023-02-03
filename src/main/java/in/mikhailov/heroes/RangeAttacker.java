@@ -51,6 +51,7 @@ public abstract class RangeAttacker extends Hero {
 
     @Override
     public void step() {
+        setRandomPriority();
         if (this.getHealth() == 0) return;
         if (shots > 0) {
             HashMap<Hero, Float> nearestOpponent = getNearestOpponent();

@@ -27,6 +27,7 @@ public class Peasant extends Hero {
 
     @Override
     public void step() {
+        setRandomPriority();
         if (health == 0) return;
 
         List<RangeAttacker> rangeAttackers = this.getTeam().getHeroes().stream().filter(hero -> hero.getClass().getSuperclass().getName().contains("RangeAttacker")).map(hero -> (RangeAttacker) hero).toList();

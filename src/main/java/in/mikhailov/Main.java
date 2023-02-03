@@ -58,26 +58,27 @@ public class Main {
         List<Team> teams = new ArrayList<>(2);
 
         Team team1 = new Team("red");
-        RandomFactory randomFactoryTeam1 = new RandomFactory(new HeroFactory[]{
+        team1.setRandomFactory(new RandomFactory(new HeroFactory[]{
                 new PeasantFactory(),
                 new RoqueFactory(),
                 new SniperFactory(),
                 new WizardFactory()
-        });
+        }));
+
         while (team1.getSize() < team1.getCapacity()) {
-            team1.add(randomFactoryTeam1.create());
+            team1.add(team1.getRandomFactory().create());
         }
         teams.add(team1);
 
         Team team2 = new Team("white");
-        RandomFactory randomFactoryTeam2 = new RandomFactory(new HeroFactory[]{
+        team2.setRandomFactory(new RandomFactory(new HeroFactory[]{
                 new CrossbowmanFactory(),
                 new MonkFactory(),
                 new PeasantFactory(),
                 new SpearmanFactory(),
-        });
+        }));
         while (team2.getSize() < team2.getCapacity()) {
-            team2.add(randomFactoryTeam2.create());
+            team2.add(team2.getRandomFactory().create());
         }
         teams.add(team2);
 
