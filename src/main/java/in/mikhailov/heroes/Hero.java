@@ -6,6 +6,7 @@ import in.mikhailov.battle.Direction;
 import in.mikhailov.groups.Team;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public abstract class Hero implements IHero {
     protected String name;
@@ -18,6 +19,9 @@ public abstract class Hero implements IHero {
     private int speed;
     private int[] damage;
     private Cell cell;
+    private final Random random;
+    private int randomPriority;
+    private boolean pass;
 
     protected Hero(int attack, int defense, int[] damage, int maxHealth, int speed, String name) {
         this.attack = attack;
@@ -28,6 +32,10 @@ public abstract class Hero implements IHero {
         this.speed = speed;
         this.name = name.isEmpty() ? (new Faker()).name().firstName() : name;
         this.className = this.getClass().getName().split("\\.")[3];
+
+        random = new Random();
+        randomPriority = random.nextInt(0,10);
+        pass = false;
     }
 
     @Override
@@ -202,5 +210,20 @@ public abstract class Hero implements IHero {
             }
             return direction;
         } else return null;
+    }
+
+    public int getRandomPriority() {
+        return randomPriority;
+    }
+
+    public void setRandomPriority() {
+        this.randomPriority = random.nextInt(0,10);
+    }
+
+    public boolean isPass() {
+        return pass;
+    }
+    public void setPass(boolean pass) {
+        this.pass = pass;
     }
 }

@@ -62,7 +62,9 @@ public class Battle {
         team2.getHeroes().forEach(hero -> {
             if (hero.getHealth() > 0) liveHeroes.add(hero);
         });
-        liveHeroes.sort(Comparator.comparing(Hero::getSpeed,Comparator.reverseOrder()));
+        liveHeroes.sort(Comparator
+                .comparing(Hero::getSpeed,Comparator.reverseOrder())
+                .thenComparing(Hero::getRandomPriority));
 
         for (Hero hero: liveHeroes) {
             if (hero.getHealth() > 0) {

@@ -1,5 +1,8 @@
 package in.mikhailov.heroes;
 
+import in.mikhailov.battle.Cell;
+import in.mikhailov.groups.Team;
+
 public abstract class Magician extends Hero {
 
     private int mana;
@@ -24,7 +27,37 @@ public abstract class Magician extends Hero {
 
     @Override
     public void step() {
+        setRandomPriority();
+        if (isPass()) {
+            setPass(false);
+            return;
+        }
         if (health == 0) return;
+
+        for (Hero deadHero: team) {
+            if (deadHero.getHealth() == 0) {
+
+                Cell tempCell = deadHero.getCell();
+                Team tempTeam = deadHero.getTeam();
+                int index = tempTeam.getHeroes().indexOf(deadHero);
+
+                System.out.println(this.getClassName() + " " + this.getName() +
+                        " resurrects " + deadHero.getName());
+
+                Hero newHero = team.getRandomFactory().create();
+                newHero.setCell(tempCell);
+                tempCell.setHero(newHero);
+                newHero.setTeam(tempTeam);
+
+                tempTeam.getHeroes().set(index, newHero);
+                setPass(true);
+
+                System.out.println(newHero.getClassName() + " " + newHero.getName() +
+                        " now alive ✨");
+
+                return;
+            }
+        }
 
         Hero lowestHealthHero = null;
         float lowestHealthPoints = 1000;

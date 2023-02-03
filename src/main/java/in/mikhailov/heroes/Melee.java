@@ -12,6 +12,7 @@ public abstract class Melee extends Hero {
 
     @Override
     public void step() {
+        setRandomPriority();
         if (health == 0) return;
 
         HashMap<Hero, Float> nearestOpponent = getNearestOpponent();

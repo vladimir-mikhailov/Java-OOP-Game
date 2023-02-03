@@ -1,15 +1,25 @@
 package in.mikhailov.groups;
 
 import in.mikhailov.heroes.Hero;
+import in.mikhailov.heroes.RandomFactory;
 
 public class Team extends Group {
     private final String color;
     private Team opponentTeam;
+    private RandomFactory randomFactory;
 
     public Team(String color) {
         super();
         this.setCapacity(10);
         this.color = color;
+    }
+
+    public RandomFactory getRandomFactory() {
+        return randomFactory;
+    }
+
+    public void setRandomFactory(RandomFactory randomFactory) {
+        this.randomFactory = randomFactory;
     }
 
     @Override
